@@ -8,49 +8,36 @@ public class libprotobuf : ModuleRules
 	{
 		Type = ModuleType.External;
 
-		string protobuf_code_directory_path = ModuleDirectoryPath + "/protobuf";
-
-		PublicSystemIncludePaths.Add(protobuf_code_directory_path + "/src");
-
-		string protobuf_lib_directory_full_path = ModuleDirectoryFullPath + "/lib";
-
-        if (Target.Platform == UnrealTargetPlatform.Win32)
+        bool is_supported = false;
+        if ((Target.Platform == UnrealTargetPlatform.Win32) || (Target.Platform == UnrealTargetPlatform.Win64))
         {
-            protobuf_lib_directory_full_path += "/vs" + WindowsPlatform.GetVisualStudioCompilerVersionName();
+            is_supported = true;
+
+            string vs_path = "vs"
+                + WindowsPlatform.GetVisualStudioCompilerVersionName()
+                + ((Target.Platform == UnrealTargetPlatform.Win64) ? "win64" : "");
+            string protobuf_lib_directory_full_path = System.IO.Path.Combine(ModuleDirectoryFullPath, "lib", vs_path);
+
             PublicLibraryPaths.Add(protobuf_lib_directory_full_path);
 
-            PublicAdditionalLibraries.Add("libprotobuf-lite.lib");
+            PublicAdditionalLibraries.Add("libprotobuf.lib");
 
             Definitions.AddRange(
                 new string[]
                 {
-                    "WIN32",
+                    ((Target.Platform == UnrealTargetPlatform.Win64) ? "WIN64" : "WIN32"),
                     "_WINDOWS",
                     "NDEBUG",
                     "GOOGLE_PROTOBUF_CMAKE_BUILD",
                 });
         }
-        else if (Target.Platform == UnrealTargetPlatform.Win64)
-		{
-            protobuf_lib_directory_full_path += "/vs" + WindowsPlatform.GetVisualStudioCompilerVersionName() + "win64";
-			PublicLibraryPaths.Add(protobuf_lib_directory_full_path);
 
-			PublicAdditionalLibraries.Add("libprotobuf-lite.lib");
+        if (is_supported)
+        {
+            string protobuf_code_directory_full_path = System.IO.Path.Combine(ModuleDirectoryFullPath, "protobuf", "src");
 
-            Definitions.AddRange(
-                new string[]
-                {
-                    "WIN64",
-                    "_WINDOWS",
-                    "NDEBUG",
-                    "GOOGLE_PROTOBUF_CMAKE_BUILD",
-                });
+            PublicSystemIncludePaths.Add(protobuf_code_directory_full_path);
         }
-    }
-
-    string ModuleDirectoryPath
-    {
-        get { return "./"; }
     }
 
     string ModuleDirectoryFullPath
