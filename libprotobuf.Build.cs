@@ -4,9 +4,9 @@ using UnrealBuildTool;
 
 public class libprotobuf : ModuleRules
 {
-	public libprotobuf(TargetInfo Target)
-	{
-		Type = ModuleType.External;
+    public libprotobuf(TargetInfo Target)
+    {
+        Type = ModuleType.External;
 
         bool is_supported = false;
         if ((Target.Platform == UnrealTargetPlatform.Win32) || (Target.Platform == UnrealTargetPlatform.Win64))
