@@ -1,4 +1,4 @@
-2016-04-13 version 0.1-beta
+2016-04-13 version 0.1-beta-1
   * Create the project
   * Import the Google's Protocal-Buffers
   * Compile the static library for Win32 and Win64 by VS2015
