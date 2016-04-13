@@ -20,7 +20,7 @@ Usage
 License
 -----
 
-None
+Use The MIT License.
 
 
 **Copyright (c) 2016, [Code 4 Game][].**
