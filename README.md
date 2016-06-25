@@ -7,13 +7,15 @@ Link the google's `protocol bufffers` library as the third party in [Unreal Engi
 Usage
 -----
 
-1. Generate the code file of the protocal by `protoc`. (Ref: [Google's Protocol Buffers][])
+1. Generate two code files (header & source, ex: Message.pb.h & Message.pb.cc) of the protocal by `protoc` for `cpp`. (Ref: [Google's Protocol Buffers][])
 1. Regenerate the code file for [Unreal Engine 4][] by `regenerateforue4.py`.
-    * `python regenerateforue4.py 'your code file'`
-1. You need include two header files when include the `code file`'s header.
-    * `#include "AllowWindowsPlatformTypes.h"`  //< before include `code file`'s header
-    * `#include "your code header file"`
-    * `#include "HideWindowsPlatformTypes.h"`   //< after include `code file`'s header
+    * `python regenerateforue4.py 'the source file'`
+    * ex: `python regenerateforue4.py Message.pb.cc`
+    * You should get this information: `Success to regenerate the code for UE4`
+1. You need include two header files when include the header file(ex: Message.pb.h).
+    * `#include "AllowWindowsPlatformTypes.h"`  //< before include the header file
+    * `#include "your code header file"`        //< ex: `#include "Message.pb.h"`
+    * `#include "HideWindowsPlatformTypes.h"`   //< after include the header file
 1. That's all.
 
 
