@@ -1,3 +1,5 @@
+# Copyright @ 2016, Code 4 Game, Under The MIT License.
+
 from datetime import *
 import os
 import sys
