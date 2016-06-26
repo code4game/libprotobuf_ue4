@@ -7,6 +7,9 @@ Link the google's `protocol bufffers` library as the third party in [Unreal Engi
 Usage
 -----
 
+1. Import or copy this project into `<your project>/ThirdParty/libprotobuf`.
+1. Add the libprotobuf as a module into `<your project>.Build.cs`
+  * `PrivateDependencyModuleNames.AddRange(new string[] { "CoreUObject", "Engine", "libprotobuf" });`
 1. Generate two code files (header & source, ex: Message.pb.h & Message.pb.cc) of the protocal by `protoc` for `cpp`. (Ref: [Google's Protocol Buffers][])
 1. Regenerate the code file for [Unreal Engine 4][] by `regenerateforue4.py`.
     * `python regenerateforue4.py 'the source file'`
