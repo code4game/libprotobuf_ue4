@@ -24,6 +24,13 @@ Usage
 1. That's all.
 
 
+Roadmap
+-----
+
+* Write a tutorial for the usage and create an example
+* Support mobile platforms - Android/iOS/Windows Phone
+
+
 License
 -----
 
