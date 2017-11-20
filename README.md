@@ -1,6 +1,8 @@
 libprotobuf for [Unreal Engine 4][]
 =====
 
+[![Join the chat at https://gitter.im/code4game/libprotobuf](https://badges.gitter.im/code4game/libprotobuf.svg)](https://gitter.im/code4game/libprotobuf?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Link the google's `protocol bufffers` library as the third party in [Unreal Engine 4][].
 
 
